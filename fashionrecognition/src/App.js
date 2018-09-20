@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import ImageCollection from './components/ImageCollection';
 import About from './components/About';
 import GenerateTrends from './components/GenerateTrends';
+import ViewLabelImages from './components/ViewLabelImages';
 
 import './App.css';
 import './index.css';
@@ -27,6 +28,7 @@ class App extends Component {
             <Route path="/image-collection" component={ImageCollection}/>
             <Route path="/generate-trends" component={GenerateTrends}/>
             <Route path="/contact" component={Contact}/>
+            <Route path="/image-collection/:label" component={ViewLabelImages}/>
           </div>
         </div>
       </HashRouter>
