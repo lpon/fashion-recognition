@@ -1,2 +1,2 @@
-./backend/*.pyc
-./backend/migrations/*
+./backend/imageCollection/__pycache__/*.pyc
+./backend/imageCollection/migrations/*
