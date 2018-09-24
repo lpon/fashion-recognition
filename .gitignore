@@ -1,2 +1,3 @@
 ./backend/imageCollection/__pycache__/*.pyc
 ./backend/imageCollection/migrations/*
+./backend/db.sqlite3
