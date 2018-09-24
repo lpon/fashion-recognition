@@ -18,8 +18,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('get-images/', views.ImageCollection.getImages),
-    path('save-to-test/', views.ImageCollection.saveTestImage), 
-    path('save-all', views.ImageCollection.saveImage),
+    path('get-images/', views.getImages),
+    # path('save-to-test/', views.ImageCollection.saveTestImage), 
+    path('save-image/', views.saveImage),
+    # path('save-to-training/', views.ImageCollection.saveImageToTraining)
 ]

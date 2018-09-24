@@ -6,18 +6,19 @@ class ImageCollection extends Component {
         super(props);
 
         this.state = {
+            dataSet: "all",
             region: "",
             item: "",
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDataSetChange = this.handleDataSetChange.bind(this);
         this.handleRegionChange = this.handleRegionChange.bind(this);
         this.handleItemChange = this.handleItemChange.bind(this);
-        this.setImages = this.setImages.bind(this);
-      }
-
-    setImages() { 
-        return [];
+    }
+    
+    handleDataSetChange(event) {
+        this.setState({dataSet: event.target.value});
     }
 
     handleRegionChange(event) {
@@ -29,25 +30,38 @@ class ImageCollection extends Component {
     }
 
     handleSubmit(e) { 
-        // console.log(this.state.region);
-        // console.log(this.state.item);
-        const label = "./" + this.state.region + "-" + this.state.item;
-        console.log("images");
+        console.log(this.state.dataSet);
+        console.log(this.state.region);
+        console.log(this.state.item);
+        const label = "images/" + this.state.region + "-" + this.state.item;
         console.log("rerouting to view label images:", label);
-        var image_urls = this.setImages();
         // redirect to the view label image page
         this.props.history.push({ 
             pathname: label,
-            state: {data: {image_urls}}
+            state: {
+                        data: {
+                                label: this.state.region + " " + this.state.item, 
+                                // dataSet: this.state.dataSet
+                                }
+                        }
           }); 
     }
     
     render() {
-        return (
+        return (    
             <div>
                 <h2>Image Collection</h2>
                 <br/><br/>
-                <form onSubmit={this.handleSubmit}>
+                <form>
+                    {/* <label>
+                        <select onChange={this.handleDataSetChange}>
+                            <option value="all">All</option>
+                            <option value="training">Training</option>
+                            <option value="test">Test</option>
+                        </select>
+                        Select which data set you would like to save your images
+                    </label>
+                    <br/><br/> */}
                     <label>
                         <input 
                         type="text" 
@@ -66,8 +80,8 @@ class ImageCollection extends Component {
                         Enter an item of clothing (e.g., "skirt", "pants")
                     </label>
                     <br/><br/>
-                    <input type="submit" value= "Submit"/>
                 </form> 
+                <button onClick={this.handleSubmit}>View Images</button>
             </div>
         );
     }
