@@ -4,5 +4,6 @@ from django.db import models
 
 
 class Image(models.Model): 
-    path = models.FilePathField()
-    tags = models.CharField(max_length=200)
+    path = models.CharField(max_length=250)
+    tags = models.CharField(max_length=250)
+    objects = models.Manager()

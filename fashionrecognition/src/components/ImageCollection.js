@@ -30,17 +30,16 @@ class ImageCollection extends Component {
     }
 
     handleSubmit(e) { 
-        console.log(this.state.dataSet);
-        console.log(this.state.region);
-        console.log(this.state.item);
-        const label = "images/" + this.state.region + "-" + this.state.item;
+        const region = this.state.region.toLowerCase().trim()
+        const item = this.state.item.toLowerCase().trim()
+        const label = "images/" + region + "-" + item;
         console.log("rerouting to view label images:", label);
         // redirect to the view label image page
         this.props.history.push({ 
             pathname: label,
             state: {
                         data: {
-                                label: this.state.region + " " + this.state.item, 
+                                label: region + " " + item, 
                                 // dataSet: this.state.dataSet
                                 }
                         }
@@ -68,7 +67,7 @@ class ImageCollection extends Component {
                         value={this.state.region}
                         onChange={this.handleRegionChange} 
                         />
-                        Enter a region (e.g., "korea")
+                        Enter a region in it's adjective form (e.g., "Korean", "American")
                     </label>
                     <br/><br/>
                     <label>
@@ -77,7 +76,7 @@ class ImageCollection extends Component {
                         value={this.state.item}
                         onChange={this.handleItemChange} 
                         />
-                        Enter an item of clothing (e.g., "skirt", "pants")
+                        Enter an item of clothing (e.g., "Skirt", "Pants")
                     </label>
                     <br/><br/>
                 </form> 
