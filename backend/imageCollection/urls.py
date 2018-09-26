@@ -21,5 +21,6 @@ urlpatterns = [
     path('get-images/', views.getImages),
     # path('save-to-test/', views.ImageCollection.saveTestImage), 
     path('save-image/', views.saveImage),
+    path('set-current-page/', views.setCurrentPage),
     # path('save-to-training/', views.ImageCollection.saveImageToTraining)
 ]
