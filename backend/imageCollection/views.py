@@ -30,42 +30,49 @@ def getImages(request):
     searchTerm = data["label"]
     
     if LabelCurrentPage.objects.filter(label=searchTerm).count() == 0:
-        labelCurrentPage = LabelCurrentPage.objects.create(label=searchTerm, page=0)
+        labelCurrentPage = LabelCurrentPage.objects.create(label=searchTerm, page=1)
         labelCurrentPage.save()
-    else:
-        labelCurrentPage = LabelCurrentPage.objects.get(label=searchTerm).page
 
+    currentPage = LabelCurrentPage.objects.get(label=searchTerm).page
 
     my_cse_id = CONFIG["my_cse_id"]
+    print(my_cse_id)
     my_api_key = CONFIG["my_api_key"]
+    print(my_api_key)
     response_data = {"urls": []}
     
-    # i = 0
-    # while (i < 10):
-    #     startIndex = labelCurrentPage
-    #     searchUrl = "https://www.googleapis.com/customsearch/v1?q=" + \
-    #         searchTerm + "&start=" + str(startIndex) + "&key=" + my_api_key + "&cx=" + my_cse_id + \
-    #         "&searchType=image"
+    i = 0
 
-    #     result = json.loads(requests.get(searchUrl).content.decode('utf-8'))
-    #     print(result)
-    #     for item in result["items"]:
-    #         response_data["urls"].append(item["link"])
+    while (i <= 50):
+        startIndex = currentPage + i
+        # print("count ", startIndex)
+        searchUrl = "https://www.googleapis.com/customsearch/v1?q=" + \
+            searchTerm + "&start=" + str(startIndex) + "&key=" + my_api_key + "&cx=" + my_cse_id + \
+            "&searchType=image"
+
+        result = json.loads(requests.get(searchUrl).content.decode('utf-8'))
+        print(result)
+        print(result.keys)
         
-    #     startIndex += 10
-    #     i += 1
+        if "items" not in result:
+            break
 
-    response_data["urls"] = ([
-                        'https://i.ebayimg.com/images/g/RVkAAOSwQ6pZkrHB/s-l300.jpg', 
-                        'https://i.ebayimg.com/images/g/4vUAAOSw44BYWIar/s-l300.jpg', 
-                        'https://cdn.shopify.com/s/files/1/0758/2735/products/TB2KbmOqpXXXXasXXXXXXXXXXXX__108409380.jpg_600x600_3a0893ff-53c2-401f-8144-ecb7dbcfd243.jpg?v=1510921323', 
-                        'https://ae01.alicdn.com/kf/HTB101TxRVXXXXcGXpXXq6xXFXXXt/Harajuku-Skirts-Womens-2017-Korean-Summer-Style-New-Plaid-Pleated-Skirt-Rock-Kawaii-High-Waist-Fashion.jpg_640x640.jpg', 
-                        'https://cdn.store-assets.com/s/113714/i/427524.jpeg', 
-                        'https://dlp2gfjvaz867.cloudfront.net/product_photos/38567286/U_5DA_5D)_5B_25VAGIGCXJ8Q3AK2_5DB_original.png', 'https://gd.image-gmkt.com/li/060/420/1007420060.g_400-w-st_g.jpg', 
-                        'https://ae01.alicdn.com/kf/HTB12C1sQVXXXXXQapXXq6xXFXXXA/2018-New-Korean-Style-Summer-Women-High-Waisted-Pleated-Lace-Black-Skirts-Female-Casual-Three-Layers.jpg_640x640.jpg', 
-                        'https://i.ebayimg.com/images/g/RVkAAOSwQ6pZkrHB/s-l300.jpg'
-                        ])
+        for item in result["items"]:
+            response_data["urls"].append(item["link"])
+        
+        i += 10
 
+    # response_data["urls"] = ([
+    #                     'https://i.ebayimg.com/images/g/RVkAAOSwQ6pZkrHB/s-l300.jpg', 
+    #                     'https://i.ebayimg.com/images/g/4vUAAOSw44BYWIar/s-l300.jpg', 
+    #                     'https://cdn.shopify.com/s/files/1/0758/2735/products/TB2KbmOqpXXXXasXXXXXXXXXXXX__108409380.jpg_600x600_3a0893ff-53c2-401f-8144-ecb7dbcfd243.jpg?v=1510921323', 
+    #                     'https://ae01.alicdn.com/kf/HTB101TxRVXXXXcGXpXXq6xXFXXXt/Harajuku-Skirts-Womens-2017-Korean-Summer-Style-New-Plaid-Pleated-Skirt-Rock-Kawaii-High-Waist-Fashion.jpg_640x640.jpg', 
+    #                     'https://cdn.store-assets.com/s/113714/i/427524.jpeg', 
+    #                     'https://dlp2gfjvaz867.cloudfront.net/product_photos/38567286/U_5DA_5D)_5B_25VAGIGCXJ8Q3AK2_5DB_original.png', 'https://gd.image-gmkt.com/li/060/420/1007420060.g_400-w-st_g.jpg', 
+    #                     'https://ae01.alicdn.com/kf/HTB12C1sQVXXXXXQapXXq6xXFXXXA/2018-New-Korean-Style-Summer-Women-High-Waisted-Pleated-Lace-Black-Skirts-Female-Casual-Three-Layers.jpg_640x640.jpg', 
+    #                     'https://i.ebayimg.com/images/g/RVkAAOSwQ6pZkrHB/s-l300.jpg'
+    #                     ])
+    # print(response_data)
     return JsonResponse(response_data)
 
 @csrf_exempt
