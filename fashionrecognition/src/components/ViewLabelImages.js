@@ -88,7 +88,11 @@ class ViewLabelImages extends Component {
                     'http://127.0.0.1:8000/api/set-current-page/', 
                     data, 
                     {headers: {'Content-Type': 'application/json'}}
-        ).then(this.setState({returnToCollectMoreImages: true}));
+        ).
+        then(this.setState({ images: [] })).
+        then(this.setState({ image: null })).
+        then(this.setState({ label: "" })).
+        then(this.setState({returnToCollectMoreImages: true}));
     }
     
     render() {

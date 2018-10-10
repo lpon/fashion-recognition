@@ -31,19 +31,25 @@ class ImageCollection extends Component {
 
     handleSubmit(e) { 
         const region = this.state.region.toLowerCase().trim()
-        const item = this.state.item.toLowerCase().trim()
-        const label = "images/" + region + "-" + item;
-        console.log("rerouting to view label images:", label);
-        // redirect to the view label image page
-        this.props.history.push({ 
-            pathname: label,
-            state: {
-                        data: {
-                                label: region + " " + item, 
-                                // dataSet: this.state.dataSet
-                                }
-                        }
-          }); 
+
+        if (region === "") {
+            alert("Please select a valid region")
+        } else {
+            const item = this.state.item.toLowerCase().trim()
+            const label = "images/" + region + "-" + item;
+            console.log("rerouting to view label images:", label);
+            // redirect to the view label image page
+            this.props.history.push({ 
+                pathname: label,
+                state: {
+                            data: {
+                                    label: region + " " + item, 
+                                    // dataSet: this.state.dataSet
+                                    }
+                            }
+              }); 
+        }
+
     }
     
     render() {
@@ -61,22 +67,23 @@ class ImageCollection extends Component {
                         Select which data set you would like to save your images
                     </label>
                     <br/><br/> */}
+
                     <label>
-                        <input 
-                        type="text" 
-                        value={this.state.region}
-                        onChange={this.handleRegionChange} 
-                        />
-                        Enter a region in it's adjective form (e.g., "Korean", "American")
+                    Select a region that you'd like to search for<br/>
+                        <select onChange={this.handleRegionChange}>
+                            <option value="">Select</option>
+                            <option value="fashion instagram">America</option>
+                            <option value="korean fashion">Korea</option>
+                        </select>
                     </label>
                     <br/><br/>
                     <label>
+                    Enter an item of clothing (e.g., "Skirt", "Pants")<br/>
                         <input 
                         type="text" 
                         value={this.state.item}
                         onChange={this.handleItemChange} 
                         />
-                        Enter an item of clothing (e.g., "Skirt", "Pants")
                     </label>
                     <br/><br/>
                 </form> 

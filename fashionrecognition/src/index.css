@@ -4,8 +4,8 @@ body {
   padding: 20px;
   margin: 0;
 }
-h1, h2, p, ul, li {
-  font-family: 'sans-serif';
+h1, h2, p, ul, li, label {
+  font-family: 'arial';
 }
 ul.header li {
   display: inline;

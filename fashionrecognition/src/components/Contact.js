@@ -6,10 +6,12 @@ class Contact extends Component {
     return (
       <div>
         <h2>Contact Information</h2>
-            <br/>
-            Email: lia.pon@mail.utoronto.ca
-            <br/>
-            Mobile: (647)-500-0016
+            <p>
+              Email: lia.pon@mail.utoronto.ca
+              <br/>
+              Mobile: (647)-500-0016
+            </p>
+           
       </div>
     );
   }
