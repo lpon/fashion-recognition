@@ -1,4 +1,4 @@
-# fashion-recognition
+# Fashion Recognition
 A research project conducted with a CS Professor at the University of Toronto that would investigate potential ways that we could use different models in deep learning to classify fashion. There were several iterations on what we were trying to classify. We began the project hoping we could use image classification to classify fashion based on regional fashion trends and extend that to current regional fashion trends. However, given data limitations and lack of consistent features within regional fashion, we began to look into classifying fashion based on designer.
 
 ## Contents
