@@ -1,5 +1,0 @@
-django-rest-framework==3.8.2
-django-cors-headers==2.4.0
-django-instagram==0.3.0
-google-api-python-client==1.7.4
-google-images-search==0.1.1

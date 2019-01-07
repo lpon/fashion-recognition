@@ -1,0 +1,5 @@
+django-rest-framework
+django-cors-headers
+django-instagram
+google-api-python-client
+google-images-search

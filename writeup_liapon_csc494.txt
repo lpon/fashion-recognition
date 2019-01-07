@@ -1,0 +1,566 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\include{graphics}
+
+\title{Capstone: Classifying Fashion}
+\author{Lia Pon}
+\date{October 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The purpose of this research project was to see if we could classify fashion into distinct groups using artificial intelligence. We chose to pursue this project by focusing our efforts on understanding deep learning image classifciation using a CNN model.    
+
+\section{Classification by Region}
+\begin{subsection} {Overview}
+    This classification model makes use of TensorFlow, the open source library for numerical computation with a focus on deep learning applications, and its computer vision model, MobileNet, a image classification model that specializes in maximizing accuracy while  minimizing resources used.\\\\  
+    The tutorial from Google Developers Codelabs was used to set up the project (https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#0).
+\end{subsection}
+
+\begin{subsection} {Initial Setup}
+    Our dataset contains the 13 labeled image folder: 
+    \begin{enumerate}
+        \item korean\_dress (containing 30 images)
+        \item korean\_jacket (containing 65 images)
+        \item korean\_pants (containing 26 images)
+        \item korean\_shirt (containing 119 images)
+        \item korean\_shorts (containing 36 images)
+        \item korean\_skirt (containing 71 images)
+        \item korean\_sweater (containing 14 images)
+        \item western\_dress (containing 16 images)
+        \item western\_jacket (containing 53 images)
+        \item western\_shirt (containing 70 images)
+        \item western\_shorts (containing 21 images)
+        \item western\_skirt (containing 54 images)
+        \item western\_sweater (containing 20 images)
+    \end{enumerate}
+    Image resolution was set to 224px and the architecture used was mobilenet\_0.50\_224.
+\end{subsection}
+
+\subsection{Training}
+\begin{enumerate}
+    \item 500 training steps
+    \begin{verbatim}
+    INFO:tensorflow:Final test accuracy = 43.1% (N=58)
+    \end{verbatim}
+    \item 4000 training steps
+    \begin{verbatim}
+    INFO:tensorflow:Final test accuracy = 41.4% (N=58)
+    \end{verbatim}
+
+\end{enumerate}
+
+\begin{subsection} {Randomized Testing}
+\textit{Test results using the model trained with 4000 training steps}\\
+\begin{enumerate}
+    \item tf\_files/dataset/korean\_shorts/korean-fashion-women-lady-high-waist-denim-short-jeans-pants-lifeonlineshop-1607-11-lifeonlineshop@1.jpg\\
+    Evaluation time (1-image): 0.176s\\
+    korean shorts (score=0.99616)\\
+    western skirt (score=0.00325)\\
+    western shorts (score=0.00055)\\
+    western shirt (score=0.00003)\\
+    korean skirt (score=0.00001)\\
+    \item tf\_files/dataset/korean\_dress/2016-summer-new-Korean-fashion-princess-dress-Family-fitted-mother-of-women.jpg\\
+    Evaluation time (1-image): 0.181s\\
+    korean dress (score=0.99280)\\
+    western skirt (score=0.00262)\\
+    western dress (score=0.00222)\\
+    western jacket (score=0.00206)\\
+    korean skirt (score=0.00025)\\
+    \item tf\_files/dataset/western\_dress/Best-Outfits-Wear-Instagram-Pictures.jpg\\
+    Evaluation time (1-image): 0.179s\\
+    western dress (score=0.99627)\\
+    korean dress (score=0.00202)\\
+    korean skirt (score=0.00117)\\
+    western shorts (score=0.00027)\\
+    korean shirt (score=0.00021)\\
+
+    \item tf\_files/dataset/western\_dress/23AE5C50-8FCB-41E0-8432-77B6E6099DEC-1440x1809.jpg\\
+    Evaluation time (1-image): 0.182s\\
+    western sweater (score=0.53128)\\
+    western shirt (score=0.18326)\\
+    western dress (score=0.08724)\\
+    western jacket (score=0.08234)\\
+    western skirt (score=0.07103)\\
+
+    \item tf\_files/dataset/korean\_pants/Summer-Pants-Women-2018-Korean-Fashion-Plaid-Drawstring-High-Waist-Trousers-Casual-Loose-Bottoms-Streetwear-pantalon.jpg\\
+    Evaluation time (1-image): 0.191s\\
+    korean skirt (score=0.78846)\\
+    korean pants (score=0.11184)\\
+    korean jacket (score=0.09207)\\
+    western skirt (score=0.00585)\\
+    korean sweater (score=0.00136)
+\end{enumerate}
+\end{subsection}
+
+\begin{Analysis}
+The labels from the dataset that contained a greater number of images had a higher rate of classification accuracy, however, due to the limitations of collecting large amounts of quality data we decided to change the method by which we were classifying fashion.
+
+
+\section{Classification by Fashion Designer}
+\begin{subsection} {Overview}
+Since the previous training did not yield adequate results when trying to classify fashion by region, we decided to train the model to classify fashion by designer.\\\\
+Ideally, the model would be able to view an image and be able to determine who designed each item of clothing seperately, however, in order to simplify our data and increase the number of images per label, we decided that we would train with images depicting an entire outfit.\\\\
+We also wanted to explore the impact of differently sized datasets. Therefore, using the same set of 140 images (i.e., 70 images of Gucci outfits, 70 images of Balenciaga outfits) we devised three different tests. The first test would train with 60 images (i.e., 30 outfits from each designer), the next would train with 120 images, and the final test would train with the full 140 images.\\\\
+We continued to use MobileNet as our image classification model.
+\end{subsection}
+
+\begin{subsection}{Training with 60 images}
+For our first test, we trained with images 61-100 from each designer and used images 1-20 for testing.
+\begin{verbatim}
+INFO:tensorflow:Final test accuracy = 90.0% (N=10)
+\end{verbatim}
+The model mislabeled 16 out the 40 test images great certainty.\\\\
+All of the images it incorrectly classified were images from the Balenciaga test set.
+\end{subsection}
+
+\begin{subsection}{Training with 120 images}
+For our second test, we trained with images 21-140 from each designer and used images 1-20 for testing.
+\begin{verbatim}
+INFO:tensorflow:Final test accuracy = 72.7% (N=22)    
+\end{verbatim}
+The model mislabelled 7 images- 6 were from the Balenciaga test set, 1 from the Gucci test set (however, the mislabelled Gucci image was not mislabelled in the previous test). The model also corretly labeled images with more certainty than the previous test. 
+\end{subsection}
+
+\begin{subsection}{Training with 140 images}
+For our third test, we used all 140 images from each designer and obtained new images for the test dataset.
+\begin{verbatim}
+INFO:tensorflow:Final test accuracy = 96.0% (N=25)
+\end{verbatim}
+The model performed similarly to the previous test in that 7 images were mislabelled and the certainty with which it correctly labelled images increased.
+\end{subsection}
+
+\begin{subsection} {Analysis}
+We concluded with our three tests that by increasing the size of our dataset, we could increase the classification accuracy of the model. However, other than the size of our dataset, we were unsure about whether there were other reasons that were contributing to the overall low performance of our model.\\\\ 
+We considered two reasons outside of the size of our data set - that the model we had chosen was not robust enough to capture the differences between the fashion designers, or that the designers themselves were too indistinguishable from each other.//// 
+In order to get more insight into the reasons for the inaccuracies, we investigated Google Deep Dream in hopes of getting a visual representation of the features being identified by the model so we could see if there are important features not being extracted. However, upon futher research we learned that Google Deep Dream was not re-trainable for a different dataset. Rather, Deep Dream is a tool with which you can see what things the model "sees" in any given photo based on pre-determined labels. 
+
+At this point, since data collection was not the main focus of this research project, we decided to use a new tensorflow model, Inception, which is a widely-used image recognition model that has attained an accuracy greater than 78.1\% on the ImageNet dataset, and see if it could produce better results than the current model we were using. The main distinction between Inception and MobileNet is its resource usage. Where MobileNet strived to be a lightweight classification model that would potentially sacrifice accuracy to minimize resource usage, Inception was built to be heavyweight and in that, serves its primary focus of attaining the highest accuracy possible.\\\\
+However, after training Inception with the full dataset and testing the model, we found that the same inaccuracies remained (although we did find that model was slightly less certain about its classification than with MobileNet). 
+\end{subsection}
+
+\begin{subsection} {Inception model test results}}
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_1.jpg
+balenciaga 0.88176435
+gucci 0.11823563
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_10.jpg
+gucci 0.763797
+balenciaga 0.23620303
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_11.jpg
+gucci 0.9886701
+balenciaga 0.011329895
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_12.jpg
+gucci 0.6906141
+balenciaga 0.3093859
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_13.jpg
+balenciaga 0.9560368
+gucci 0.043963235
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_14.jpg
+balenciaga 0.7004074
+gucci 0.29959258
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_15.jpg
+balenciaga 0.97924805
+gucci 0.020751968
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_16.jpg
+balenciaga 0.7510924
+gucci 0.24890761
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_17.jpg
+balenciaga 0.8343037
+gucci 0.16569637
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_18.jpg
+balenciaga 0.87878054
+gucci 0.12121948
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_19.jpg
+balenciaga 0.98487353
+gucci 0.0151264435
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_2.jpg
+balenciaga 0.9328818
+gucci 0.06711821
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_20.jpg
+balenciaga 0.99852246
+gucci 0.001477511
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_3.jpg
+gucci 0.5541335
+balenciaga 0.44586653
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_4.jpg
+balenciaga 0.96347415
+gucci 0.03652582
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_5.jpg
+balenciaga 0.9797815
+gucci 0.020218475
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_6.jpg
+balenciaga 0.9909922
+gucci 0.009007795
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_7.jpg
+balenciaga 0.98313034
+gucci 0.0168696
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_8.jpg
+gucci 0.985823
+balenciaga 0.01417703
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_9.jpg
+balenciaga 0.7783562
+gucci 0.2216438
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_1.jpg
+gucci 0.9992036
+balenciaga 0.0007963504
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_10.jpg
+gucci 0.999876
+balenciaga 0.00012400949
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_11.jpg
+gucci 0.9848817
+balenciaga 0.015118298
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_12.jpg
+gucci 0.9708515
+balenciaga 0.029148564
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_13.jpg
+gucci 0.9977641
+balenciaga 0.0022359365
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_14.jpg
+gucci 0.98509026
+balenciaga 0.01490976
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_15.jpg
+gucci 0.5041769
+balenciaga 0.49582314
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_16.jpg
+gucci 0.9516438
+balenciaga 0.048356146
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_17.jpg
+balenciaga 0.6087698
+gucci 0.39123023
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_18.jpg
+gucci 0.9431824
+balenciaga 0.056817513
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_19.jpg
+gucci 0.9990115
+balenciaga 0.0009884131
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_2.jpg
+gucci 0.98752046
+balenciaga 0.012479523
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_20.jpg
+gucci 0.99866366
+balenciaga 0.0013363704
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_3.jpg
+gucci 0.9997148
+balenciaga 0.00028516183
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_4.jpg
+balenciaga 0.6269194
+gucci 0.37308064
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_5.jpg
+gucci 0.8000963
+balenciaga 0.19990368
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_6.jpg
+gucci 0.8945108
+balenciaga 0.10548913
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_7.jpg
+gucci 0.9728916
+balenciaga 0.02710836
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_8.jpg
+gucci 0.9989207
+balenciaga 0.0010793302
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_9.jpg
+gucci 0.99923074
+balenciaga 0.0007692222
+_________________________________________________________________
+
+\end{subsection}
+
+\section{Classification by hyper-polarizing fashion designers}
+\begin{subsection} {Overview}
+Since we couldn't increase performance by using a more robust model and we didn't want increase the size of our dataset, we decided to choose two designers who had a notably different style in design. By doing this, we could increase the consistency within each desginer and hopefully, create a more stark constrast that the model could interpret reliably.\\\\
+For this we continued using Inception as our image classification model and build a dataset using Hugo Boss and Gucci for our designers.  
+
+\end{subsection}
+
+\begin{subsection} {Results}
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_1.jpg
+boss 0.99740726
+gucci 0.002592679
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_10.jpg
+boss 0.9150167
+gucci 0.08498328
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_11.jpg
+boss 0.9978027
+gucci 0.0021973136
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_12.jpg
+boss 0.99828184
+gucci 0.0017181303
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_13.jpg
+boss 0.99752206
+gucci 0.0024779495
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_14.jpg
+boss 0.99921775
+gucci 0.00078220794
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_15.jpg
+boss 0.99957186
+gucci 0.00042809232
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_16.jpg
+boss 0.73339605
+gucci 0.26660395
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_17.jpg
+boss 0.999723
+gucci 0.00027701704
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_18.jpg
+boss 0.999851
+gucci 0.00014893388
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_2.jpg
+boss 0.92075473
+gucci 0.07924521
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_20.jpg
+boss 0.99694186
+gucci 0.0030580622
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_3.jpg
+boss 0.99467885
+gucci 0.0053212233
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_4.jpg
+boss 0.9997131
+gucci 0.00028687157
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_5.jpg
+boss 0.99979335
+gucci 0.00020663139
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_6.jpg
+boss 0.91376156
+gucci 0.086238466
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_7.jpg
+boss 0.99982905
+gucci 0.00017093992
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_8.jpg
+boss 0.9953994
+gucci 0.0046005603
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/Boss_9.jpg
+boss 0.9982577
+gucci 0.0017422677
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_1.jpg
+gucci 0.9919382
+boss 0.00806182
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_10.jpg
+gucci 0.9574548
+boss 0.042545244
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_11.jpg
+gucci 0.83191586
+boss 0.16808413
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_12.jpg
+gucci 0.95936996
+boss 0.040630054
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_13.jpg
+gucci 0.9994733
+boss 0.0005267572
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_14.jpg
+gucci 0.9976452
+boss 0.0023547737
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_15.jpg
+gucci 0.9859526
+boss 0.014047452
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_16.jpg
+boss 0.7168639
+gucci 0.28313607
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_17.jpg
+gucci 0.9949851
+boss 0.005014922
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_18.jpg
+gucci 0.999495
+boss 0.00050496246
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_19.jpg
+gucci 0.9805964
+boss 0.019403597
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_2.jpg
+gucci 0.81762886
+boss 0.18237114
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_20.jpg
+gucci 0.6740263
+boss 0.3259737
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_3.jpg
+gucci 0.9992743
+boss 0.0007256579
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_4.jpg
+gucci 0.99671644
+boss 0.0032834788
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_5.jpg
+gucci 0.99499595
+boss 0.0050040055
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_6.jpg
+gucci 0.71147335
+boss 0.28852662
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_7.jpg
+gucci 0.99558485
+boss 0.0044150716
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_8.jpg
+gucci 0.9756547
+boss 0.024345307
+_________________________________________________________________
+_________________________________________________________________
+./contrast_by_designer_full/test_images/gucci_9.jpg
+gucci 0.99957734
+boss 0.00042270872
+_________________________________________________________________
+\end{subsection}
+
+\begin{subsection} {Analysis}
+Here we can see that the model was  able to classify every test image with great certainty. This leads us to believe that so long as the fashion of a certain designer is distinguishable enough by a given feature and consistent within its designs, when being compared to another designer whom is equally consistent and distinguishable by a different feature, a classical CNN model should be able to accurately classify fashion by designer.\\\\   
+\end{subsection}
+
+\section{Next Steps}
+Now that we have established that we can use a classical CNN to classify fashion by designer under certain conditions, the next steps would be to determine how to design a model that can classify fashion by designer when there is less of a stark constract between designers by potentially using a different deep learning framework to capture specific features of fashion designers that the classical CNN cannot extract.\\\\
+While a CNN relies entirely on visual feature extraction, there are other frameworks that can be trained by identifying non-visual features. Perhaps in order to solve the issue that fashion designers are often not completely consistent within their own designs and that there is a great deal of overlap between designers, we need to consider building a model that relies not only on visual features, but more context around the designer (i.e., how the designer is percieved by the public, what the current general fashions trends are, celebrity associations, advertisments, etc).
+ 
+
+                                                                                                              
+
+\end{document}
+

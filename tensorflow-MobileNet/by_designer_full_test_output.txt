@@ -1,0 +1,320 @@
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_1.jpg
+
+Evaluation time (1-image): 0.185s
+
+balenciaga (score=1.00000)
+gucci (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_10.jpg
+
+Evaluation time (1-image): 0.175s
+
+balenciaga (score=1.00000)
+gucci (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_11.jpg
+
+Evaluation time (1-image): 0.178s
+
+balenciaga (score=0.94679)
+gucci (score=0.05321)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_12.jpg
+
+Evaluation time (1-image): 0.181s
+
+gucci (score=0.84585)
+balenciaga (score=0.15415)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_13.jpg
+
+Evaluation time (1-image): 0.176s
+
+balenciaga (score=0.84319)
+gucci (score=0.15681)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_14.jpg
+
+Evaluation time (1-image): 0.172s
+
+balenciaga (score=0.85962)
+gucci (score=0.14038)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_15.jpg
+
+Evaluation time (1-image): 0.175s
+
+balenciaga (score=0.99661)
+gucci (score=0.00339)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_16.jpg
+
+Evaluation time (1-image): 0.181s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_17.jpg
+
+Evaluation time (1-image): 0.174s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_18.jpg
+
+Evaluation time (1-image): 0.173s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_19.jpg
+
+Evaluation time (1-image): 0.174s
+
+balenciaga (score=1.00000)
+gucci (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_2.jpg
+
+Evaluation time (1-image): 0.174s
+
+balenciaga (score=0.99998)
+gucci (score=0.00002)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_20.jpg
+
+Evaluation time (1-image): 0.172s
+
+balenciaga (score=0.99998)
+gucci (score=0.00002)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_3.jpg
+
+Evaluation time (1-image): 0.175s
+
+gucci (score=0.97679)
+balenciaga (score=0.02321)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_4.jpg
+
+Evaluation time (1-image): 0.179s
+
+balenciaga (score=1.00000)
+gucci (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_5.jpg
+
+Evaluation time (1-image): 0.172s
+
+balenciaga (score=0.99998)
+gucci (score=0.00002)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_6.jpg
+
+Evaluation time (1-image): 0.175s
+
+balenciaga (score=0.99998)
+gucci (score=0.00002)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_7.jpg
+
+Evaluation time (1-image): 0.177s
+
+balenciaga (score=0.99847)
+gucci (score=0.00153)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_8.jpg
+
+Evaluation time (1-image): 0.187s
+
+gucci (score=0.96684)
+balenciaga (score=0.03316)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/balenciaga_9.jpg
+
+Evaluation time (1-image): 0.171s
+
+balenciaga (score=1.00000)
+gucci (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_1.jpg
+
+Evaluation time (1-image): 0.176s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_10.jpg
+
+Evaluation time (1-image): 0.172s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_11.jpg
+
+Evaluation time (1-image): 0.174s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_12.jpg
+
+Evaluation time (1-image): 0.175s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_13.jpg
+
+Evaluation time (1-image): 0.180s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_14.jpg
+
+Evaluation time (1-image): 0.173s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_15.jpg
+
+Evaluation time (1-image): 0.172s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_16.jpg
+
+Evaluation time (1-image): 0.177s
+
+gucci (score=0.99997)
+balenciaga (score=0.00003)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_17.jpg
+
+Evaluation time (1-image): 0.174s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_18.jpg
+
+Evaluation time (1-image): 0.182s
+
+balenciaga (score=0.99964)
+gucci (score=0.00036)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_19.jpg
+
+Evaluation time (1-image): 0.174s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_2.jpg
+
+Evaluation time (1-image): 0.178s
+
+gucci (score=0.99999)
+balenciaga (score=0.00001)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_20.jpg
+
+Evaluation time (1-image): 0.170s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_3.jpg
+
+Evaluation time (1-image): 0.178s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_4.jpg
+
+Evaluation time (1-image): 0.178s
+
+gucci (score=0.99847)
+balenciaga (score=0.00153)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_5.jpg
+
+Evaluation time (1-image): 0.173s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_6.jpg
+
+Evaluation time (1-image): 0.171s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_7.jpg
+
+Evaluation time (1-image): 0.176s
+
+gucci (score=0.99992)
+balenciaga (score=0.00008)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_8.jpg
+
+Evaluation time (1-image): 0.173s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
+_________________________________________________________________
+by_designer_full/test_images/gucci_9.jpg
+
+Evaluation time (1-image): 0.171s
+
+gucci (score=1.00000)
+balenciaga (score=0.00000)
+_________________________________________________________________
